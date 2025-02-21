@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker.ez - Mejora tu juego</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".content-section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function showSection(id) {
+        // Ocultar todas las secciones
+        sections.forEach(section => {
+            section.classList.add("hidden");
+        });
+
+        // Mostrar la sección seleccionada
+        const sectionToShow = document.querySelector(id);
+        if (sectionToShow) {
+            sectionToShow.classList.remove("hidden");
+        }
+    }
+
+    // Mostrar la sección al hacer clic en el menú de navegación
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            showSection(this.getAttribute("href"));
+        });
+    });
+
+    // JavaScript para el sistema de pestañas en la sección de suscripción
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanes = document.querySelectorAll(".tab-pane");
+
+    tabButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const targetPane = document.getElementById("contenido-" + this.id.split("-")[1]);
+
+            tabButtons.forEach(btn => btn.classList.remove("active"));
+            tabPanes.forEach(pane => pane.classList.remove("active"));
+
+            this.classList.add("active");
+            targetPane.classList.add("active");
+        });
+    });
+});
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Tracker.ez</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#biblioteca" class="nav-link">Biblioteca</a></li>
+                <li><a href="#suscripcion" class="nav-link">Suscripción</a></li>
+                <li><a href="#estadisticas" class="nav-link">Estadísticas</a></li>
+                <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <section id="inicio" class="content-section">
+        <h1>Tracker.ez</h1>
+        <h2>La mejor herramienta para mejorar en tus juegos favoritos</h2>
+        <p>Accede a estadísticas detalladas, videos educativos de jugadores profesionales y mejora tu rendimiento como nunca antes.</p>
+        <h3>Idea de Negocio y Propuesta de Valor</h3>
+        <p>Tracker.ez es una plataforma diseñada para ofrecer un análisis detallado de videojuegos, proporcionando estadísticas en tiempo real, sistema de búsqueda avanzada y una biblioteca de videos exclusivos de jugadores competitivos.</p>
+    </section>
+    
+    <section id="biblioteca" class="content-section hidden">
+        <h2>Biblioteca de Videos</h2>
+        <p>Accede a videos exclusivos creados por expertos.</p>
+        <h2>Ejemplos de Videos</h2>
+        <div class="video-container">
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="Cómo mejorar tu puntería en FPS">
+                </a>
+                <p>Cómo mejorar tu puntería en FPS</p>
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=3GwjfUFyY6M" target="_blank">
+                    <img src="https://img.youtube.com/vi/3GwjfUFyY6M/0.jpg" alt="Estrategias avanzadas para MOBA">
+                </a>
+                <p>Estrategias avanzadas para MOBA</p>
+            </div>
+            <div class="video-item">
+                <a href="https://www.youtube.com/watch?v=2Z4m4lnjxkY" target="_blank">
+                    <img src="https://img.youtube.com/vi/2Z4m4lnjxkY/0.jpg" alt="Análisis de partidas competitivas">
+                </a>
+                <p>Análisis de partidas competitivas</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="suscripcion" class="content-section hidden">
+        <h2>Planes de Suscripción</h2>
+        <p>Elige el plan que más se adapte a ti y mejora tu juego.</p>
+        <h3>Estrategia de Marketing</h3>
+        <p>Tracker.ez se posiciona como la plataforma más completa al integrar múltiples videojuegos en un solo sitio. Ofrecemos opciones de suscripción flexibles para adaptarnos a las necesidades de cada usuario.</p>
+        
+        <div class="tabs">
+            <button class="tab-button active" id="plan-basico">Plan Básico</button>
+            <button class="tab-button" id="plan-premium">Plan Premium</button>
+            <button class="tab-button" id="plan-elite">Plan Elite</button>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="contenido-basico">
+                <h4>Plan Básico</h4>
+                <p>Acceso a estadísticas básicas y contenido limitado de la biblioteca de videos.</p>
+                <p><strong>Precio:</strong> 5€/mes</p>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li>Estadísticas básicas de rendimiento</li>
+                    <li>Acceso limitado a videos educativos</li>
+                    <li>Soporte básico</li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="contenido-premium">
+                <h4>Plan Premium</h4>
+                <p>Acceso completo a estadísticas avanzadas y una mayor selección de videos educativos.</p>
+                <p><strong>Precio:</strong> 15€/mes</p>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li>Estadísticas avanzadas y detalladas</li>
+                    <li>Acceso completo a la biblioteca de videos</li>
+                    <li>Soporte prioritario</li>
+                    <li>Actualizaciones frecuentes</li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="contenido-elite">
+                <h4>Plan Elite</h4>
+                <p>Acceso total a todas las herramientas, incluyendo análisis detallados y contenido exclusivo de alta calidad.</p>
+                <p><strong>Precio:</strong> 30€/mes</p>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li>Acceso completo a todas las estadísticas y análisis avanzados</li>
+                    <li>Contenido exclusivo y de alta calidad</li>
+                    <li>Soporte premium 24/7</li>
+                    <li>Acceso anticipado a nuevas características</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="estadisticas" class="content-section hidden">
+        <h2>Estadísticas</h2>
+        <p>Analiza tu rendimiento y progreso en el juego.</p>
+        <h3>Visión, Misión y Valores</h3>
+        <p><strong>Visión:</strong> Convertirnos en la herramienta de referencia para gamers, impulsando el rendimiento y la comunidad a través de datos precisos y análisis intuitivos.</p>
+        <p><strong>Misión:</strong> Optimiza tu rendimiento y lleva tu nivel de juego al siguiente nivel.</p>
+        <p><strong>Valores:</strong> Innovación, Comunidad, Transparencia, Diversidad y Responsabilidad.</p>
+    </section>
+    
+    <section id="contacto" class="content-section hidden">
+        <img src="C:\Users\Usuario\Desktop\VSCODE\PagWeb\Logo.png">
+        <h2>Contacto</h2>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+            
+            <button type="submit">Enviar</button>
+
+            <!-- Enlaces a redes sociales -->
+            <div class="social-links">
+                <h3>Síguenos en nuestras redes sociales</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com" target="_blank" class="social-link">Facebook</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank" class="social-link">Twitter</a></li>
+                    <li><a href="https://www.instagram.com" target="_blank" class="social-link">Instagram</a></li>
+                </ul>
+            </div>
+
+        </form>
+    </section>
+        <section id="nosotros" class="content-section hidden">
+            <h2>Nosotros</h2>
+            <p>Soy Pablo, un apasionado de la informática. Me especializo en desarrollar soluciones tecnológicas innovadoras que impulsan el crecimiento y la eficiencia empresarial y ofrezco soluciones adaptadas a las necesidades específicas de cada cliente.</p>
+            <p>Desde Tracker.EZ, hemos desarrollado una plataforma que combina estadísticas en tiempo real con una biblioteca exclusiva de videos de jugadores profesionales.</p>
+        
+            <div class="video-container">
+                <div class="video-item">
+                    <video width="700" height="410" controls>
+                        <source src="C:\Users\Usuario\Desktop\VSCODE\PagWeb\Final.mp4" type="video/mp4">
+                        Video presentativo.
+                    </video>
+                </div>
+            </div>
+        
+            <h2>Como trabajamos</h2>
+            <p>Para que mi empresa funcione de manera eficiente, he decidido estructurarla con un organigrama horizontal, eliminando jerarquías rígidas y promoviendo una comunicación fluida entre todos los miembros del equipo.</p>
+            <p>Aun así, quiero aplicar un liderazgo coaching, donde mi rol principal no es solo dirigir, sino guiar, motivar y ayudar al equipo a desarrollarse profesionalmente.</p>
+            
+            <img src="C:\Users\Usuario\Desktop\VSCODE\PagWeb\organigrama.png">
+
+            
+        </section>
+        
+    </div>
+
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Tracker.ez - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
